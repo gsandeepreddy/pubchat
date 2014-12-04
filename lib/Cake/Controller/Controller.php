@@ -669,8 +669,6 @@ class Controller extends Object implements CakeEventListener {
  * - triggers Component `startup` methods.
  *
  * @return void
- * @triggers Controller.initialize $this
- * @triggers Controller.startup $this
  */
 	public function startupProcess() {
 		$this->getEventManager()->dispatch(new CakeEvent('Controller.initialize', $this));
@@ -685,7 +683,6 @@ class Controller extends Object implements CakeEventListener {
  * - calls the Controller's `afterFilter` method.
  *
  * @return void
- * @triggers Controller.shutdown $this
  */
 	public function shutdownProcess() {
 		$this->getEventManager()->dispatch(new CakeEvent('Controller.shutdown', $this));
@@ -754,7 +751,6 @@ class Controller extends Object implements CakeEventListener {
  * @param int $status Optional HTTP status code (eg: 404)
  * @param bool $exit If true, exit() will be called after the redirect
  * @return void
- * @triggers Controller.beforeRedirect $this, array($url, $status, $exit)
  * @link http://book.cakephp.org/2.0/en/controllers.html#Controller::redirect
  */
 	public function redirect($url, $status = null, $exit = true) {
@@ -924,7 +920,6 @@ class Controller extends Object implements CakeEventListener {
  * @param string $view View to use for rendering
  * @param string $layout Layout to use
  * @return CakeResponse A response object containing the rendered view.
- * @triggers Controller.beforeRender $this
  * @link http://book.cakephp.org/2.0/en/controllers.html#Controller::render
  */
 	public function render($view = null, $layout = null) {
